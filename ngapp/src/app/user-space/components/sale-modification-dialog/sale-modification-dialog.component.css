@@ -1,0 +1,39 @@
+.dialog-title{
+    margin: 2vh;
+    display: flex;
+}
+
+.dialog-title H1{
+    font-size: 24px;
+}
+
+.dialog-title button{
+    position: absolute;
+    right: 2vh;
+    font-size: 18px;
+    color: #ff914d;
+}
+
+.form-control-search{
+    width: 100%;
+    margin: 2vh 0 2vh 0;
+}
+
+td, th{
+    width: 2vw;
+    text-align: center;
+}
+
+
+.table-card{
+    border-radius: 15px;
+    padding: 1vh;
+    border: 1px #eee solid;
+}
+
+::ng-deep .modification-dialog mat-dialog-container .mat-mdc-dialog-surface{
+    height: 60vh ;
+    width: 50vw ;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}

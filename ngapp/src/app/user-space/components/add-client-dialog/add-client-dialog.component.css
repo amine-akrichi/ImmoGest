@@ -1,0 +1,65 @@
+.example-margin{
+    margin-right: 2vw;
+}
+
+.row{
+    margin: 1vh;
+}
+
+.exemple-space{
+    padding: 2vh;
+}
+
+.sub-row{
+    width: fit-content;
+    margin-left: 10vw;
+    padding: 5px;
+}
+.form-control-half-width{
+    margin-right:1vh;
+    margin-left: 1vh ;
+    margin-top: 1vh ;
+    margin-bottom:1vh ;
+    width: 45%;
+}
+
+.form-control-full-width{
+    width: calc(90% + 2vh);
+}
+
+.form-control-third-width{
+    width: calc(90% / 3 - .5vh);
+    margin-right:1vh;
+    margin-left: 1vh ;
+}
+
+.dialog-title h1{
+    font-size: 24px;
+}
+
+mat-stepper{
+    height: 80%;
+}
+.done-btn{
+    position: absolute ;
+    font-size: large;
+    top: 3vh;
+    right: 3vw;
+    color: #ff941d;
+}
+
+
+.cancel-btn{
+    position: absolute ;
+    font-size: large;
+    top: 3vh;
+    right: 10vw;
+    
+}
+
+.next-btn{
+    transition: 0.1s ease;
+    position: absolute !important;
+    bottom: 3vh;
+    right: 3vw;
+}

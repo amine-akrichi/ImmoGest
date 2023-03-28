@@ -1,0 +1,63 @@
+<H1 matDialogTitle id="title">Promesse de vente</H1>
+<mat-dialog-content>
+    <div class="form">
+        <div class="row">
+            <mat-form-field appearance="outline" class="form-control-half-width">
+                <mat-label>N° d'appartement</mat-label>
+                <mat-select [(ngModel)]="data!.appartementNumber">
+                    <mat-option *ngFor="let appartement of appartementList" [value]="appartement.number">
+                        {{appartement.number}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field class="form-control-half-width" appearance="outline">
+                <mat-label>Date de Promesse</mat-label>
+                <input matInput type="date" [(ngModel)]="data.date">
+                <mat-hint>MM/JJ/AAAA</mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Prix initial</mat-label>
+                <input matInput type="number" value="0" [(ngModel)]="data.initialPrice">
+                <span matTextSuffix>DT</span>
+            </mat-form-field>
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Valeur des Réductions</mat-label>
+                <input matInput type="number" value="0" [(ngModel)]="data.discount">
+                <span matTextSuffix>DT</span>
+            </mat-form-field>
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Prix après Réductions</mat-label>
+                <input matInput disabled [value]="data.initialPrice-data.discount" [(ngModel)]="data.discountedPrice">
+                <span matTextSuffix>DT</span>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="form-control-half-width" appearance="outline">
+                <mat-label>Prix de Parking</mat-label>
+                <input matInput type="number" [(ngModel)]="data.parkingPrice">
+                <span matTextSuffix>DT</span>
+            </mat-form-field>
+            <mat-form-field class="form-control-half-width" appearance="outline">
+                <mat-label>Prix de Cellier</mat-label>
+                <input matInput type="number" [(ngModel)]="data.cellierPrice">
+                <span matTextSuffix>DT</span>
+            </mat-form-field>
+    
+        </div>
+        <div class="row">
+            <div id="totalPrice">
+                <Span>Prix Total à PAYER : </Span>
+                <mat-form-field>
+                    <input matInput disabled
+                        [value]="(data.initialPrice-data.discount) + data.cellierPrice+data.parkingPrice"
+                        [(ngModel)]="data.totalPrice">
+                    <span matTextSuffix>DT</span>
+                </mat-form-field>
+            </div>
+            <button mat-button id="confirm-btn" (click)="closeDialog()">CONFIRMER</button>
+        </div>
+    </div>
+</mat-dialog-content>

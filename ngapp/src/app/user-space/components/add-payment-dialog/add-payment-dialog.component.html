@@ -1,0 +1,46 @@
+<div class="dialog-title" mat-dialog-title>
+    <h1>Ajouter un Paiement</h1>
+    <button mat-button class="confirm-btn" [mat-dialog-close]="data" cdkFocusInitial>Confirmer</button>
+</div>
+<mat-dialog-content>
+    <div class="row">
+        
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>N°</mat-label>
+            <input matInput type="number" [(ngModel)]="data.number">
+        </mat-form-field>
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Prix</mat-label>
+            <input matInput type="number" [(ngModel)]="data.price">
+            <span matSuffix >DT</span>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Etat</mat-label>
+            <mat-select [(ngModel)]="data.state" >
+                <mat-option value="A Payer">A Payer</mat-option>
+                <mat-option value="Payé">Payé</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Titre</mat-label>
+            <input matInput [(ngModel)]="data.title">
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput type="date" [(ngModel)]="data.date">
+            <mat-hint>MM/JJ/AAAA</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Mode</mat-label>
+            <mat-select [(ngModel)]="data.mode" >
+                <mat-option value="Chèque">Chèque</mat-option>
+                <mat-option value="Espèce">Espèce</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>

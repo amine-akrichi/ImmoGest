@@ -1,0 +1,5 @@
+<H1 mat-dialog-title >Supprimer {{data?.type}} {{data?.data}} ?</H1>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data">Annuler</button>
+    <button mat-button color="warn" [mat-dialog-close]="data" (click)="onConfirmDelete()"><mat-icon>delete_forever</mat-icon>Supprimer</button>
+</mat-dialog-actions>

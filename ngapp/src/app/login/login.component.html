@@ -1,0 +1,37 @@
+<div class="background-div">
+    <mat-card class="login-card">
+        <div class="image-div">
+            <img src="../../assets/image-div.png" alt="">
+        </div>
+        <div class="form-div">
+            <form (ngSubmit)="onLogin" name="loginForm" [formGroup]="loginForm" >
+                <h1>Bienvenue</h1>
+                <div class="username-input">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>username</mat-label>
+                        <input type="username" formControlName="username" matInput required>
+                        <mat-error *ngIf="loginForm.get('username')?.errors?.['required']" >
+                            username obligatoire
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <br>
+                <div class="password-input">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Mot de passe </mat-label>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+            
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="loginForm.get('password')?.errors?.['required']" >
+                            Mot de passe obligatoire
+                        </mat-error>
+                    </mat-form-field>  
+                </div>
+            
+                <button mat-raised-button id="sbmt-btn" class="full-width" (click)="onLogin()">LOGIN</button><br><br>
+            </form>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<H1 mat-dialog-title > Ajouter un utilisateur</H1>
+<div class="dialog-content" mat-dialog-content >
+    <mat-form-field class="form-control-full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="data.email" >
+    </mat-form-field>
+    <mat-form-field class="form-control-full-width" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput [(ngModel)]="data.username" required>
+    </mat-form-field>
+    <mat-form-field class="form-control-full-width" appearance="outline">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput [(ngModel)]="data.password" required>
+    </mat-form-field>    
+</div>
+
+<mat-dialog-actions align="end" >
+    <button mat-button class="submit-btn" color="primary" [mat-dialog-close]="data" cdkFocusInitial >ajouter</button>
+</mat-dialog-actions>

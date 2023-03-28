@@ -1,0 +1,130 @@
+<body>
+    <nav>
+        <span class="title">Profile d'utilisateur</span> 
+        <span class="example-spacer"></span>
+    </nav>
+    <mat-divider></mat-divider>
+    <section class="profile-cards" >
+        <article>
+            <!--<mat-card class="quick-profile-card"> 
+                <mat-card-header>
+                    <img class="header-img" src="assets/defaultProfilePic.png" alt="">
+                    <h1 style="color: rgb(255, 128, 0);" >{{loggedInUser.lastname}} {{loggedInUser.name}}</h1>
+                    <h3 style="color:#888;">@{{loggedInUser.username}}</h3>
+                </mat-card-header>
+                
+                <mat-card-content>
+                  {{loggedInUser.description}}
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-actions>
+                    <div style="color:#888;"><H1>N</H1> Clients</div>
+                    <div style="color:#888;"><H1>N</H1> Ventes</div>
+                    <div style="color:#888;"><H1>N</H1> Réclemations</div>
+                </mat-card-actions>
+            </mat-card>-->
+            <mat-card class="contact-team-card"> 
+                <mat-card-header>
+                    <H1>Membres de l'équipe</H1>
+                </mat-card-header>
+                
+                <mat-card-content>
+                    <div *ngFor="let user of users">
+                        <mat-card class="user-info" *ngIf="user.username != loggedInUser.username">
+                            <mat-card-header>
+                                <mat-card-title style="color: #ff914d; font-weight: bold;">{{user.name}} {{user.lastname}}</mat-card-title>
+                                <mat-card-subtitle>@{{user.username}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-actions align="end">
+                                <a class="link-btn" [href]="'mailto:'+user.email" mat-button color="primary" matTooltip="{{user.email}}">
+                                    <mat-icon>email</mat-icon>
+                                </a>
+                                <a class="link-btn" [href]="'tel:'+user.phoneNumber" mat-button color="primary" matTooltip="{{user.phoneNumber}}">
+                                    <mat-icon>phone_iphone</mat-icon>
+                                </a>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </article>
+
+        <article>
+            <mat-card class="edit-profile-card"> 
+                <mat-card-header>
+                   <H1>Modifier votre profile</H1>
+                </mat-card-header>
+                
+                <mat-card-content>
+                    <form class="update-form">
+
+                        <div class="row">
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>UserName</mat-label>
+                                <input matInput name="username" [(ngModel)]="loggedInUser.username" >
+                            </mat-form-field>
+                            
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Mot de passe </mat-label>
+                                <input name="password" [(ngModel)]="loggedInUser.password" matInput [type]="hide ? 'password' : 'text'">
+                                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field> 
+                        </div>
+
+                        
+                        <div class="row">
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Prénom</mat-label>
+                                <input matInput name="name" [(ngModel)]="loggedInUser.name">
+                            </mat-form-field>
+                            
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Nom</mat-label>
+                                <input matInput name="lastname" [(ngModel)]="loggedInUser.lastname">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="row">
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Adresse Email</mat-label>
+                                <input matInput name="email" [(ngModel)]="loggedInUser.email">
+                            </mat-form-field>
+
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>N° Téléphone</mat-label>
+                                <input matInput name="phoneNumber" [(ngModel)]="loggedInUser.phoneNumber">
+                            </mat-form-field>
+                        </div>
+
+
+                        <div class="row">
+                           
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Adresse</mat-label>
+                                <input matInput name="address" [(ngModel)]="loggedInUser.address">
+                            </mat-form-field>
+
+                            <mat-form-field class="form-control-half-width" appearance="outline">
+                                <mat-label>Ville</mat-label>
+                                <input matInput name="city" [(ngModel)]="loggedInUser.city">
+                            </mat-form-field>
+
+                        </div>
+
+
+                        <div class="row">
+                            <mat-form-field  appearance="outline" class="form-control-full-width">
+                                <mat-label>A propos de moi</mat-label>
+                                <textarea matInput name="description" [(ngModel)]="loggedInUser.description"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                    <button mat-button id="sbmt-btn" class="form-control-full-width" (click)="updateUser(loggedInUser)" >CONFIRMER</button>
+                </mat-card-content>
+            </mat-card>
+        </article>
+    </section>
+
+</body>

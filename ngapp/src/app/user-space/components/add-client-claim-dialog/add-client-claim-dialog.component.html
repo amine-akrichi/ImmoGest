@@ -1,0 +1,34 @@
+<div class="dialog-title" mat-dialog-title>
+    <h1>Ajouter une Réclamation</h1>
+    <button mat-button class="confirm-btn" [mat-dialog-close]="data" cdkFocusInitial>Confirmer</button>
+</div>
+<mat-dialog-content>
+    <div class="row">
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput type="date" [(ngModel)]="data.date">
+            <mat-hint>MM/JJ/AAAA</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Concernant</mat-label>
+            <mat-select [(ngModel)]="data.type">
+                <mat-option value="Produit">Produit</mat-option>
+                <mat-option value="Service">Service</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field class="form-control-full-width" appearance="outline">
+            <mat-label>Details de Réclamation</mat-label>
+            <textarea matInput rows="6" [(ngModel)]="data.details"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        Type de Réponce:
+        <mat-radio-group [(ngModel)]="data.response">
+            <mat-radio-button class="example-margin" value="Télephone">Télephone</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Email">Email</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Autre">Autre</mat-radio-button>
+        </mat-radio-group>
+    </div>
+</mat-dialog-content>

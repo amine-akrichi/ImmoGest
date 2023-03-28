@@ -1,0 +1,137 @@
+body{
+    background-color: #eee;
+    scroll-behavior: smooth;
+    max-width: calc(100vw - 250px) ;
+}
+
+nav{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-input{
+    border: 0;
+    background-color:rgba(222,222,222);
+    height: 35px;
+    width: 200px;
+    border-radius: 2px;
+    margin-right: 1vw;
+    padding-left: 10px;
+}
+
+.search-input:focus{
+    outline: none;
+}
+
+.Search-icon{
+    position: sticky;
+    right: 3vw;
+}
+
+.add-icon{
+    vertical-align: middle;
+}
+
+.add-btn{
+    font-weight: 200;
+    margin-right: 2vw;
+}
+
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.title{
+    font-size: 21px;
+    font-weight: 100;
+    margin-left: 3vw;
+    color: rgb(149, 149, 149);
+}
+
+
+.table-section{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.table-card{
+    border-radius: 15px;
+    width: 80vw;
+    margin: 2vh;
+    padding: 2vh;
+    background-color: white;
+}
+
+
+mat-card{
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}
+
+.example-card {
+    width: 25vw;
+    margin-bottom: 0px;
+    border-radius: 15px 15px 0 0;
+    box-shadow: none;
+}
+
+
+.example-panel {
+    width: 25vw;
+    border-radius:0 0 15px 15px ;
+    border: 0;
+    box-shadow: none;
+}
+.example-panel div {
+    font-size: 15px;
+    margin: 10px;
+}
+
+.example-panel div a{
+    text-decoration: none;
+    color: black;
+}
+
+.example-panel div a:hover{
+    color: rgb(255, 128, 0);
+}
+
+
+article{
+    padding: 0;
+    margin: 2vh;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+    width: max-content;
+    height: max-content;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+::ng-deep .create-appartement-dialog mat-dialog-container .mat-mdc-dialog-surface{
+    height: 70vh;
+    width: 50vw;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}
+
+::ng-deep .create-appartement-dialog mat-dialog-container .mat-mdc-dialog-surface .mat-mdc-dialog-content{
+    min-height: 75%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+::ng-deep .delete-dialog mat-dialog-container .mat-mdc-dialog-surface{
+    border-radius: 15px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}

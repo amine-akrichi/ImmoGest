@@ -1,0 +1,195 @@
+<div  class="dialog-title"> 
+   <h1 mat-dialog-title>Ajouter un client</h1> 
+   <button mat-button class="cancel-btn" mat-dialog-close>Annuler</button> 
+   <button mat-button class="done-btn" color="primary" [mat-dialog-close]="data" cdkFocusInitial>Ajouter</button> 
+</div>
+
+<div class="dialog-content" mat-dialog-content >
+    <mat-stepper linear #stepper>
+        <mat-step label="Informations de client">
+            <div class="row">
+                <mat-form-field class="form-control-third-width" appearance="outline">
+                    <mat-label>CIN</mat-label>
+                    <input matInput maxlength="8" [(ngModel)]="data.cin">
+                </mat-form-field>
+                <mat-form-field class="form-control-third-width" appearance="outline">
+                    <mat-label>Nom</mat-label>
+                    <input matInput [(ngModel)]="data.lastname">
+                </mat-form-field>
+                
+                <mat-form-field class="form-control-third-width" appearance="outline">
+                    <mat-label>Prénom</mat-label>
+                    <input matInput [(ngModel)]="data.name">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="form-control-half-width" appearance="outline">
+                    <mat-label>N° télephone</mat-label>
+                    <input matInput [(ngModel)]="data.telephone">
+                </mat-form-field>
+                
+                <mat-form-field class="form-control-half-width" appearance="outline">
+                    <mat-label>Adresse email</mat-label>
+                    <input matInput [(ngModel)]="data.email">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                Age : 
+                <mat-radio-group color="primary" [(ngModel)]="data.age">
+                    <mat-radio-button class="example-margin" value="25-30">25-30 ans</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="30-45">30-45 ans</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="45-60">45-60 ans</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="+60">+60 ans</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="row">
+                Sexe : 
+                <mat-radio-group color="primary" [(ngModel)]="data.gender">
+                    <mat-radio-button class="example-margin" value="Homme">Homme</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Femme">Femme</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="row">
+                <mat-form-field class="form-control-third-width" appearance="outline">
+                    <mat-label>Adresse d'origine</mat-label>
+                    <input matInput [(ngModel)]="data.originAdress">
+                </mat-form-field>
+                <mat-form-field class="form-control-third-width" appearance="outline">
+                    <mat-label>Adresse d'habitation</mat-label>
+                    <mat-select #adresseH [(ngModel)]="data.habitationAdress">
+                        <mat-option value="El Agba">El Agba</mat-option>
+                        <mat-option value="Monastir">Monastir</mat-option>
+                        <mat-option value="Tunis">Tunis</mat-option>
+                        <mat-option value="Sousse">Sousse</mat-option>
+                        <mat-option value="Delegation Monastir">Délégation Monastir</mat-option>
+                        <mat-option value="Sud">Sud</mat-option>
+                        <mat-option value="Europe">Europe</mat-option>
+                        <mat-option value="Golf">Pays de Golf</mat-option>
+                        <mat-option value="autre">Autre</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field *ngIf="adresseH.value=='autre'" class="form-control-third-width" appearance="outline">
+                    <mat-label>Autre</mat-label>
+                    <input matInput [(ngModel)]="data.otherhabitationAdress" >
+                </mat-form-field>
+                <mat-form-field *ngIf="adresseH.value=='Delegation Monastir'" class="form-control-third-width" appearance="outline">
+                    <mat-label>Adresse d'habitation</mat-label>
+                    <mat-select [(ngModel)]="data.otherhabitationAdress">
+                        <mat-option value="El Agba">Ksar Hlel</mat-option>
+                        <mat-option value="Monastir">Jammel</mat-option>
+                        <mat-option value="Tunis">Moknine</mat-option>
+                        <mat-option value="Sousse">Tebolba</mat-option>
+                        <mat-option value="autre">Autre</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="row">
+                Origine d'Information : 
+                <mat-radio-group color="primary" [(ngModel)]="data.infoOrigin">
+                    <mat-radio-button class="example-margin" value="Voisinage">Voisinage</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Bouche à Oreilles">Bouche à Oreilles</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Affichage Urbain">Affichage Urbain</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Site Web">Site Web</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Facebook">Facebook</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="autre">Autre</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="btn-spacer"></div>
+            <button class="next-btn" mat-button color="primary" matStepperNext>Suivant</button>
+        </mat-step>
+        <mat-step label="Informations de projet">
+            <div class="exemple-space"></div>
+            <div class="row">
+                Intéressé par : 
+                <mat-radio-group color="primary" [(ngModel)]="data.interestedInappartementType">
+                    <mat-radio-button class="example-margin" value="S+1">S+1</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="S+2">S+2</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="S+3">S+3</mat-radio-button>
+                </mat-radio-group>
+                <div class="sub-row" >
+                    <mat-checkbox value="Parking" [(ngModel)]="data.interestedInparking">Parking</mat-checkbox>
+                    <mat-checkbox value="Cellier" [(ngModel)]="data.interestedIncellier">Cellier</mat-checkbox>
+                </div>
+            </div>
+            <div class="exemple-space"></div>
+            <div class="row">
+                Objectif : 
+                <mat-radio-group color="primary" [(ngModel)]="data.objectif">
+                    <mat-radio-button class="example-margin" value="Pour Habiter">Pour Habiter</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Pour investir">Pour investir</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="exemple-space"></div>
+            <div class="row">
+                Mode de paiement :
+                <mat-radio-group color="primary" [(ngModel)]="data.paymentMode">
+                    <mat-radio-button class="example-margin" value="Comptant">Comptant</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Crédit">Crédit</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Par échéances">Par échéances</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="exemple-space"></div>
+            <div class="row">
+                l'intérêt lors de l'achat d'un appartement :
+                <mat-radio-group color="primary" [(ngModel)]="data.raisonToBuy">
+                    <mat-radio-button class="example-margin" value="Prix">Prix</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Emplacement">Emplacement</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Qualité/Standing">Qualité/Standing</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="Autre">Autre</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <button class="next-btn" mat-button color="primary" matStepperNext>Suivant</button>
+        </mat-step>
+        <mat-step label="Impression et observations ">
+            <div class="row">
+                Impression globale :
+                <div class="sub-row">
+                    Du représentant :
+                    <mat-radio-group color="primary" [(ngModel)]="data.globalImpressionRepresentative">
+                        <mat-radio-button class="example-margin" value="Mauvaise">Mauvaise</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Moyenne">Moyenne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Bonne">Bonne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Excellente">Excellente</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="sub-row">
+                    De la visite :
+                    <mat-radio-group color="primary" [(ngModel)]="data.globalImpressionVisit">
+                        <mat-radio-button class="example-margin" value="Mauvaise">Mauvaise</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Moyenne">Moyenne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Bonne">Bonne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Excellente">Excellente</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="sub-row">
+                    Du produit :
+                    <mat-radio-group color="primary" [(ngModel)]="data.globalImpressionProduct">
+                        <mat-radio-button class="example-margin" value="Mauvaise">Mauvaise</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Moyenne">Moyenne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Bonne">Bonne</mat-radio-button>
+                        <mat-radio-button class="example-margin" value="Excellente">Excellente</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row">
+                observations : 
+                <div class="sub-row">
+                    <mat-checkbox value="Intéressé" [(ngModel)]="data.interested">Intéressé(e)</mat-checkbox>
+                    <mat-checkbox value="Intéressé par la 2ème tranche" [(ngModel)]="data.interestedInSecondSlice">Intéressé(e) par la 2ème tranche</mat-checkbox>
+                    <mat-checkbox value="Promesse achat signé" [(ngModel)]="data.purchasePromiseSigned">Promesse d'achat signé</mat-checkbox>
+                </div>
+                <div class="sub-row">
+                    <mat-checkbox value="Protocole de réservation signé" [(ngModel)]="data.reservationProtocoleSigned">Protocole de réservation signé</mat-checkbox>
+                    <mat-checkbox value="Intermédiaire" [(ngModel)]="data.intermediate">Intermédiaire</mat-checkbox>
+                    <mat-checkbox value="Non intéressé" [(ngModel)]="data.notInterested">Non intéressé(e)</mat-checkbox>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field  appearance="outline" class="form-control-full-width">
+                    <mat-label>Remarques</mat-label>
+                    <textarea matInput [(ngModel)]="data.remarks"></textarea>
+                </mat-form-field>
+            </div> 
+        </mat-step>
+        </mat-stepper>    
+</div>

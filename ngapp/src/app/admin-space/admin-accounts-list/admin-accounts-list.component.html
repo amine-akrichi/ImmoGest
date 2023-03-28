@@ -1,0 +1,55 @@
+<body>
+    <nav>
+        <span class="title">Liste des comptes</span> 
+        <span class="example-spacer"></span>
+        <button mat-button class="add-btn" (click)="addUser()" ><mat-icon class="add-icon">add_circle_outline</mat-icon>Ajouter un compte</button>
+        <input type="text" (keyup)="applyFilter($event)" class="search-input" placeholder="Recherche... " #input><mat-icon class="Search-icon" >search</mat-icon>
+    </nav>
+    <mat-divider></mat-divider>
+    <section class="table-section">
+        <mat-card  class="table-card" >
+          <div >
+            <table mat-table [dataSource]="dataSource" matSort>
+          
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let user"> {{ user._id}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let user"> {{ user.email}} </td>
+              </ng-container>
+          
+              <ng-container matColumnDef="username">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+                <td mat-cell *matCellDef="let user"> {{ user.username}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="password">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Mod de passe </th>
+                <td mat-cell *matCellDef="let user"> {{user.password}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                <td mat-cell *matCellDef="let user"> 
+                  <button mat-button color="primary" *ngIf="user.username!='admin2023'" (click)="updateUser(user)" ><mat-icon>edit</mat-icon></button>
+                  <button mat-button color="warn" *ngIf="user.username!='admin2023'" (click)="deleteUser(user)" ><mat-icon>delete</mat-icon></button>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let user; columns: displayedColumns;"></tr>
+          
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">Aucune donnée ne correspond au "{{input.value}}"</td>
+              </tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[10, 25]" aria-label="Select page of users"></mat-paginator>
+          </div>  
+        </mat-card>
+    </section>
+
+</body>

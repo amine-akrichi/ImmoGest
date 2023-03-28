@@ -1,0 +1,23 @@
+<div class="dialog-title" mat-dialog-title>
+    <h1>Modifier une Modification</h1>
+    <button mat-button class="confirm-btn" [mat-dialog-close]="data.modification" cdkFocusInitial>Confirmer</button>
+</div>
+<mat-dialog-content>
+    <div class="row">
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput type="date" [(ngModel)]="data.modification.date">
+            <mat-hint>MM/JJ/AAAA</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-control-half-width" appearance="outline">
+            <mat-label>Prix Estimé</mat-label>
+            <input matInput [(ngModel)]="data.modification.modificationPrice">
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field class="form-control-full-width" appearance="outline">
+            <mat-label>Modification Demandées</mat-label>
+            <textarea matInput rows="6" [(ngModel)]="data.modification.modification"></textarea>
+        </mat-form-field>
+    </div>
+</mat-dialog-content>

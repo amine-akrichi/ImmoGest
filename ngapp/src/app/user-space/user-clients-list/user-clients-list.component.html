@@ -1,0 +1,236 @@
+<body>
+
+    <nav>
+        <span class="title">Liste des clients</span>
+        <span class="example-spacer"></span>
+        <button mat-button class="add-btn" (click)="addClient()"><mat-icon
+                class="add-icon">add_circle_outline</mat-icon>Ajouter un client</button>
+        <input type="text" class="search-input" placeholder="Recherche... " [(ngModel)]="enteredSearchValue"
+            #input><mat-icon class="Search-icon">search</mat-icon>
+    </nav>
+    <mat-divider></mat-divider>
+    <section>
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong>Tous les clients</strong>
+                </ng-template>
+                <article *ngFor="let client of clientList">
+                    <div class="client-card" *ngIf="enteredSearchValue ==='' || 
+                        client.name.toLowerCase().includes(enteredSearchValue.toLowerCase()) || 
+                        client.lastname.toLowerCase().includes(enteredSearchValue.toLowerCase())">
+                        <mat-card class="example-card">
+                            <mat-card-header style="margin:0px;">
+                                <mat-card-title-group>
+                                    <mat-card-title>{{client.lastname}} {{client.name}}</mat-card-title>
+                                    <mat-card-subtitle>{{client.cin}}</mat-card-subtitle>
+                                    <span
+                                        class="{{client.type=='Client Visiteur' ? 'clientTypeV': 'clientTypeA'}}">{{client.type}}</span>
+                                </mat-card-title-group>
+                            </mat-card-header>
+                            <mat-card-content>
+
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-expansion-panel class="example-panel"
+                            (opened)="more_details.innerText='moins d\'informations'"
+                            (closed)="more_details.innerText='en savoir plus'">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <strong #more_details style="color: rgb(149, 149, 149);width: 150px;">en savoir
+                                        plus</strong>
+                                </mat-panel-title>
+                                <mat-panel-description>
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                                <a class="link-btn" mat-button [href]="'http://maps.google.com/?q='+client.originAdress"
+                                    target="_blank" matTooltip="{{client.originAdress}}">
+                                    <mat-icon>place</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button [href]="'mailto:'+client.email"
+                                    matTooltip="{{client.email}}">
+                                    <mat-icon>email</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button [href]="'tel:'+client.telephone"
+                                    matTooltip="{{client.telephone}}">
+                                    <mat-icon>phone_iphone</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button [routerLink]="['Claims',client._id]"
+                                    *ngIf="client.type == 'Client Acheteur'" matTooltip="Récalamations">
+                                    <mat-icon>error_outline</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button matBadgeColor="warn" [routerLink]="['Log',client._id]"
+                                    matTooltip="Journal de client">
+                                    <mat-icon>receipt_long</mat-icon>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <button class="action-btn" color="primary" mat-button
+                                    (click)="updateClient(client)"><mat-icon>edit</mat-icon>Modifier</button>
+                                <button class="action-btn" color="warn" mat-button
+                                    (click)="deleteClient(client)"><mat-icon>delete</mat-icon>Supprimer</button>
+                            </div>
+                            <div class="row">
+                                <button class="main-btn" *ngIf="client.type == 'Client Visiteur'"
+                                    (click)="createSellingAgreement(client)"
+                                    mat-button><mat-icon>real_estate_agent</mat-icon>Procedure de Vente</button>
+                                <button class="main-btn" *ngIf="client.type == 'Client Acheteur'"
+                                    [routerLink]="['Purchases',client._id]"
+                                    mat-button><mat-icon>real_estate_agent</mat-icon>Achats</button>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </article>
+            </mat-tab>
+
+
+
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong>Clients Visiteur</strong>
+                </ng-template>
+                <article *ngFor="let client of clientList">
+                    <div class="client-card"
+                        *ngIf="client.type ==='Client Visiteur' && enteredSearchValue ==='' || client.name.toLowerCase().includes(enteredSearchValue.toLowerCase()) || client.lastname.toLowerCase().includes(enteredSearchValue.toLowerCase())">
+                        <mat-card class="example-card">
+                            <mat-card-header style="margin:0px;">
+                                <mat-card-title-group>
+                                    <mat-card-title>{{client.lastname}} {{client.name}}</mat-card-title>
+                                    <mat-card-subtitle>{{client.cin}}</mat-card-subtitle>
+
+                                </mat-card-title-group>
+                            </mat-card-header>
+                            <mat-card-content>
+
+                            </mat-card-content>
+                        </mat-card>
+                        <mat-expansion-panel class="example-panel"
+                            (opened)="more_details.innerText='moins d\'informations'"
+                            (closed)="more_details.innerText='en savoir plus'">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <strong #more_details style="color: rgb(149, 149, 149);width: 150px;">en savoir
+                                        plus</strong>
+                                </mat-panel-title>
+                                <mat-panel-description>
+
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                                <a class="link-btn" [href]="'http://maps.google.com/?q='+client.originAdress"
+                                    target="_blank" mat-button color="primary" matTooltip="{{client.originAdress}}">
+                                    <mat-icon>place</mat-icon>
+                                </a>
+                                <a class="link-btn" [href]="'mailto:'+client.email" mat-button color="primary"
+                                    matTooltip="{{client.email}}">
+                                    <mat-icon>email</mat-icon>
+                                </a>
+                                <a class="link-btn" [href]="'tel:'+client.telephone" mat-button color="primary"
+                                    matTooltip="{{client.telephone}}">
+                                    <mat-icon>phone_iphone</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button [routerLink]="['Claims',client._id]"
+                                    *ngIf="client.type == 'Client Acheteur'" matTooltip="Récalamations">
+                                    <mat-icon>error_outline</mat-icon>
+                                </a>
+                                <a class="link-btn" mat-button color="primary" [routerLink]="['Log',client._id]"
+                                    matTooltip="Journal de client">
+                                    <mat-icon>receipt_long</mat-icon>
+                                </a>
+                            </div>
+                            <div class="row">
+                                <button class="action-btn" color="primary" mat-button
+                                    (click)="updateClient(client)"><mat-icon>edit</mat-icon>Modifier</button>
+                                <button class="action-btn" color="warn" mat-button
+                                    (click)="deleteClient(client)"><mat-icon>delete</mat-icon>Supprimer</button>
+                            </div>
+                            <div class="row">
+                                <button class="main-btn" (click)="createSellingAgreement(client)"
+                                    mat-button><mat-icon>real_estate_agent</mat-icon>Procedure de Vente</button>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+                </article>
+            </mat-tab>
+
+
+
+
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <strong>Clients Acheteur</strong>
+                </ng-template>
+                <article *ngFor="let client of clientList">
+                    <div *ngIf="client.type === 'Client Acheteur'">
+                        <div class="client-card" *ngIf="enteredSearchValue ==='' || 
+                            client.name.toLowerCase().includes(enteredSearchValue.toLowerCase()) || 
+                            client.lastname.toLowerCase().includes(enteredSearchValue.toLowerCase())">
+                            <mat-card class="example-card">
+                                <mat-card-header style="margin:0px;">
+                                    <mat-card-title-group>
+                                        <mat-card-title>{{client.lastname}} {{client.name}}</mat-card-title>
+                                        <mat-card-subtitle>{{client.cin}}</mat-card-subtitle>
+
+                                    </mat-card-title-group>
+                                </mat-card-header>
+                                <mat-card-content>
+
+                                </mat-card-content>
+                            </mat-card>
+                            <mat-expansion-panel class="example-panel"
+                                (opened)="more_details.innerText='moins d\'informations'"
+                                (closed)="more_details.innerText='en savoir plus'">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        <strong #more_details style="color: rgb(149, 149, 149);width: 150px;">en savoir
+                                            plus</strong>
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <div class="row">
+                                    <a class="link-btn" [href]="'http://maps.google.com/?q='+client.originAdress"
+                                        target="_blank" mat-button color="primary" matTooltip="{{client.originAdress}}">
+                                        <mat-icon>place</mat-icon>
+                                    </a>
+                                    <a class="link-btn" [href]="'mailto:'+client.email" mat-button color="primary"
+                                        matTooltip="{{client.email}}">
+                                        <mat-icon>email</mat-icon>
+                                    </a>
+                                    <a class="link-btn" [href]="'tel:'+client.telephone" mat-button color="primary"
+                                        matTooltip="{{client.telephone}}">
+                                        <mat-icon>phone_iphone</mat-icon>
+                                    </a>
+                                    <a class="link-btn" mat-button [routerLink]="['Claims',client._id]"
+                                        *ngIf="client.type == 'Client Acheteur'" matTooltip="Récalamations">
+                                        <mat-icon>error_outline</mat-icon>
+                                    </a>
+                                    <a class="link-btn" mat-button color="primary" [routerLink]="['Log',client._id]"
+                                        matTooltip="Journal de client">
+                                        <mat-icon>receipt_long</mat-icon>
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <button class="action-btn" color="primary" mat-button
+                                        (click)="updateClient(client)"><mat-icon>edit</mat-icon>Modifier</button>
+                                    <button class="action-btn" color="warn" mat-button
+                                        (click)="deleteClient(client)"><mat-icon>delete</mat-icon>Supprimer</button>
+                                </div>
+                                <div class="row">
+                                    <button class="main-btn" *ngIf="client.type == 'Client Acheteur'"
+                                        [routerLink]="['Purchases',client._id]"
+                                        mat-button><mat-icon>real_estate_agent</mat-icon>Achats</button>
+                                </div>
+                            </mat-expansion-panel>
+                        </div>
+                    </div>
+                </article>
+            </mat-tab>
+        </mat-tab-group>
+
+    </section>
+</body>

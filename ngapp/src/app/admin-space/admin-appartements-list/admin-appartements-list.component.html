@@ -1,0 +1,48 @@
+<body>
+    <nav>
+        <span class="title">Liste des appartements</span> 
+        <span class="example-spacer"></span>
+        <button mat-button class="add-btn" (click)="addAppartement()" ><mat-icon class="add-icon">add_circle_outline</mat-icon>Ajouter un appartement</button>
+        <input type="text"  class="search-input" placeholder="Recherche... " #input><mat-icon class="Search-icon" >search</mat-icon>
+    </nav>
+    <mat-divider></mat-divider>
+    <section class="table-section">
+        <article *ngFor="let appartement of listAppartements">
+            <mat-card  class="example-card" >
+                <mat-card-header style="margin:0px;">
+                  <mat-card-title-group>
+                    <mat-card-title><strong>{{appartement.number}}</strong> </mat-card-title>
+                    <mat-card-subtitle><Strong>{{appartement.type}}</Strong></mat-card-subtitle>
+                    <mat-card-subtitle>{{appartement.price_m2}} DT/m²</mat-card-subtitle>
+                    <div>
+                        <button mat-button color="primary" (click)="updateAppartement(appartement)"><mat-icon>edit</mat-icon></button>
+                        <button mat-button color="warn" (click)="deleteAppartement(appartement)" ><mat-icon>delete</mat-icon></button>
+                    </div>
+                  </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                </mat-card-content>
+            </mat-card>
+            <mat-expansion-panel class="example-panel" (opened)="more_details.innerText='moins d\'informations'" (closed)="more_details.innerText='en savoir plus'">
+                <mat-expansion-panel-header>
+                <mat-panel-title >
+                    <strong #more_details style="color: rgb(149, 149, 149);width: 150px;" >en savoir plus</strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                   
+                </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="mat-expansion-panel-content">
+                    <div>Etage : {{appartement.etage}}</div>
+                    <div>Bloc : {{appartement.bloc}}</div>
+                    <div>Orientation : {{appartement.orientation}}</div>
+                    <div>Vue : {{appartement.vue}}</div>
+                    <div>Superficie : {{appartement.surface}} m²</div>
+                    <div>Parking : {{appartement.parking ? 'Oui' : 'Non'}}</div>
+                    <div>Cellier : {{appartement.cellier ? 'Oui' : 'Non'}}</div>
+                </div>
+            </mat-expansion-panel>
+        </article>
+    </section>
+
+</body>

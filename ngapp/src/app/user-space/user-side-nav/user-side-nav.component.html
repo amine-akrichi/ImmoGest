@@ -1,0 +1,16 @@
+<body>
+    <nav>
+        <div class="nav-header">
+            <H1>Immo<span style="color: #ff914d;">Gest</span></H1>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="nav-body">
+            <div routerLink="Dashboard" routerLinkActive="nav-item-active"><span><mat-icon>dashboard</mat-icon>TABLEAU DE BORD</span></div>
+            <div routerLink="Clients" routerLinkActive="nav-item-active"><span><mat-icon>groups</mat-icon>CLIENTS</span></div>
+            <div routerLink="Details" routerLinkActive="nav-item-active"><span><mat-icon>person</mat-icon>PROFILE</span></div>
+            <section class="spacer" ></section>
+            <div class="logout-btn" (click)="logout()"><span><mat-icon>logout</mat-icon>DECONNEXION</span></div>
+        </div>
+    </nav> 
+    <router-outlet></router-outlet>
+</body>

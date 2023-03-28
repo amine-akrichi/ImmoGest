@@ -1,0 +1,91 @@
+body{
+    background-color: #eee;
+    scroll-behavior: smooth;
+    max-width: calc(100vw - 250px) ;
+}
+
+nav{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-input{
+    border: 0;
+    background-color:rgba(222,222,222);
+    height: 35px;
+    width: 200px;
+    border-radius: 2px;
+    margin-right: 1vw;
+    padding-left: 10px;
+}
+
+.search-input:focus{
+    outline: none;
+}
+
+.Search-icon{
+    position: sticky;
+    right: 3vw;
+}
+
+.add-icon{
+    vertical-align: middle;
+}
+
+.add-btn{
+    font-weight: 100;
+    margin-right: 2vw;
+}
+
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.title{
+    font-size: 21px;
+    font-weight: 100;
+    margin-left: 3vw;
+    color: rgb(149, 149, 149);
+}
+
+
+.table-section{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.table-card{
+    border-radius: 15px;
+    width: 80vw;
+    margin: 2vh;
+    padding: 2vh;
+    background-color: white;
+}
+
+
+mat-card{
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}
+
+th{
+    font-weight: bold;
+    text-align: center;
+
+}
+td{
+    text-align: center;
+}
+
+::ng-deep .user-dialog mat-dialog-container .mat-mdc-dialog-surface{
+    width: 30vw;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%);
+}
+
+::ng-deep .user-dialog mat-dialog-container .mat-mdc-dialog-surface .mat-mdc-dialog-content{
+    margin: 0;
+}

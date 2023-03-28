@@ -1,0 +1,18 @@
+<body>
+    <nav>
+        <div class="nav-header">
+            <H1>Immo<span style="color: #ff914d;">Gest</span></H1>
+            <span id="admin-text">espace admin</span>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="nav-body">
+            <div routerLink="Dashboard" routerLinkActive="nav-item-active"><span><mat-icon>dashboard</mat-icon>TABLEAU DE BORD</span></div>
+            <div routerLink="Accounts" routerLinkActive="nav-item-active"><span><mat-icon>manage_accounts</mat-icon>COMPTES</span></div>
+            <div routerLink="Appartements" routerLinkActive="nav-item-active"><span><mat-icon>apartment</mat-icon>APPARTEMENTS</span></div>
+            <section class="spacer" ></section>
+            <div class="logout-btn" (click)="logout()" ><span><mat-icon>logout</mat-icon>DECONNEXION</span></div>
+        </div>
+    </nav> 
+    <router-outlet></router-outlet>
+</body>
+

@@ -1,0 +1,70 @@
+<div class="dialog-title" mat-dialog-title>
+    <h1>Paiements</h1>
+    <button mat-button (click)="addPayment()"><mat-icon>add_circle_outline</mat-icon>Ajouter un Paiement</button>
+</div>
+<mat-dialog-content>
+
+    <mat-form-field class="form-control-search" appearance="outline">
+        <mat-label>Recherche</mat-label>
+        <input matInput #input>
+    </mat-form-field>
+    <mat-card class="table-card">
+        <div>
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="number">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>N°</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.number}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Montant</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.price}} </td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Etat</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.state}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Titre</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.title}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Date</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.date}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="mode">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Mode</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{ payment.mode}} </td>
+                </ng-container>
+                <ng-container matColumnDef="%">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>%</strong> </th>
+                    <td mat-cell *matCellDef="let payment"> {{((payment.price/data.sale.totalPrice)*100) | number : '.2-2'}}% </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Action</strong> </th>
+                    <td mat-cell *matCellDef="let payment">
+                        <button mat-button color="primary"
+                            (click)="updatePayment(payment)"><mat-icon>edit</mat-icon></button>
+                        <button mat-button color="warn"
+                            (click)="deletePayment(payment)"><mat-icon>delete</mat-icon></button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let payment; columns: displayedColumns;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">Aucune donnée ne correspond au "{{input.value}}"</td>
+                </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[10, 25]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </mat-card>
+</mat-dialog-content>

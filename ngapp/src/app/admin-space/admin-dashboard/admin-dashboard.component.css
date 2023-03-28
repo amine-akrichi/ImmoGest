@@ -1,0 +1,116 @@
+
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #eee;
+    scroll-behavior: smooth;
+    max-width: calc(100vw - 260px) ;
+}
+
+nav{
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-input{
+    border: 0;
+    background-color:rgba(222,222,222);
+    height: 35px;
+    width: 200px;
+    border-radius: 2px;
+    margin: 2vh;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.title{
+    font-size: 21px;
+    font-weight: 100;
+    margin-left: 3vw;
+    color: rgb(149, 149, 149);
+}
+
+
+
+.quick-stats{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.row{
+    display: flex;
+}
+
+.quick-stats-card{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    border-radius: 15px;
+    height: 150px;
+    margin: 2vh;
+    width: 100%;
+}
+
+.icon-div {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+
+}
+
+.icon-div mat-icon{
+    justify-content: center;
+    transform: scale(3);
+    color: #ff914d;
+}
+
+.info-div{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.info-div h1{
+    font-size: 3em;
+    font-weight: bold;
+    color: #545454;
+    
+}
+
+.info-div span{
+    color: #454545;
+    font-size: 1.2em;
+}
+
+.main-stats-card{
+    border-radius: 15px;
+    width: 100%;
+    margin: 2vh;
+}
+
+
+#gender-card ,#info-type-card{
+    width: 40vw;
+}
+
+#info-type-card{
+    width: 40vw;
+}
+    
+
+canvas{
+    position: relative;
+    height: 100px;
+}

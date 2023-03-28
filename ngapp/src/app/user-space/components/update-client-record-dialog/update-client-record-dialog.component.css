@@ -1,0 +1,35 @@
+.example-margin{
+    margin-right: 2vw;
+}
+
+.row{
+    margin: 1vh;
+}
+
+.exemple-space{
+    padding: 2vh;
+}
+
+.sub-row{
+    width: fit-content;
+    margin-left: 10vw;
+    padding: 5px;
+}
+.form-control-half-width{
+    margin-right:1vh;
+    margin-left: 1vh ;
+    margin-top: 1vh ;
+    margin-bottom:1vh ;
+    width: 45%;
+}
+
+.form-control-full-width{
+    width: calc(90% + 2vh);
+    margin-left: 1vh;
+}
+
+.form-control-third-width{
+    width: calc(90% / 3 - .5vh);
+    margin-right:1vh;
+    margin-left: 1vh ;
+}

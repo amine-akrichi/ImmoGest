@@ -1,0 +1,53 @@
+<body>
+    <nav>
+        <span class="title">Achats de client {{client?.lastname}} {{client?.name}} </span>
+        <span class="example-spacer"></span>
+        <button mat-button class="add-btn" (click)="addSale()"><mat-icon
+                class="add-icon">add_circle_outline</mat-icon>Ajouter un Achat</button>
+        <input type="text" class="search-input" placeholder="Recherche... " #input><mat-icon
+            class="Search-icon">search</mat-icon>
+    </nav>
+    <mat-divider></mat-divider>
+    <section class="table-section">
+        <article *ngFor="let sale of salesList">
+            <mat-card class="example-card">
+                <mat-card-header style="margin:0px;">
+                    <mat-card-title-group>
+                        <mat-card-title><strong>{{sale.appartementNumber}}</strong> </mat-card-title>
+                        <mat-card-subtitle style="color: #ff914d;font-size: 16px;"><Strong>{{sale.totalPrice}}
+                                DT</Strong></mat-card-subtitle>
+                        <div>
+                            <button mat-button matTooltip="Paiements" style="color: #ff914d;"
+                                (click)="payments(sale)"><mat-icon
+                                    style=" transform: scale(1.5);">request_quote</mat-icon></button>
+                            <button mat-button matTooltip="Modification Demandés" style="color: #545454;"
+                                (click)="modifications(sale)"><mat-icon
+                                    style=" transform: scale(1.5);">tune</mat-icon></button>
+                        </div>
+                    </mat-card-title-group>
+                </mat-card-header>
+                <mat-card-content>
+                </mat-card-content>
+            </mat-card>
+            <mat-expansion-panel class="example-panel" (opened)="more_details.innerText='moins d\'informations'"
+                (closed)="more_details.innerText='en savoir plus'">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <strong #more_details style="color: rgb(149, 149, 149);width: 150px;">en savoir plus</strong>
+                    </mat-panel-title>
+                    <mat-panel-description>
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div class="mat-expansion-panel-content">
+                    <div>Prix Initial : {{sale.initialPrice}} DT</div>
+                    <div>Réductions : {{sale.discount}} DT</div>
+                    <div>Prix après Réduction : {{sale.discountedPrice}} DT</div>
+                    <div>Parking : {{sale.parkingPrice}} DT</div>
+                    <div>Cellier : {{sale.cellierPrice}} DT</div>
+                    <div>Extras : {{sale.extrasPrice}} DT</div>
+                </div>
+            </mat-expansion-panel>
+        </article>
+    </section>
+</body>

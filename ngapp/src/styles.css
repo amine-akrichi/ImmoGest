@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@keyframes fadeIn {
+    from {
+      opacity: 0.2;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+mat-card{
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%) !important;
+    transition: box-shadow 1s ease !important;
+}
+
+mat-card:hover{
+    box-shadow: 0 12px 20px -4px rgb(0 0 0 / 15%) !important;
+}
+  
+body {
+    animation: fadeIn 0.2s ease-in;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+
+*:not(mat-icon){
+    font-family: 'Quicksand', sans-serif !important;
+}
+
+*::-webkit-scrollbar{
+    width: 1vh;
+}
+
+*::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: rgba(255, 128, 0, 0.80);
+}
+
+*::-webkit-scrollbar-track{
+    border-radius: 5px;
+    background-color: #ddd;
+}
+
+*::-webkit-scrollbar-thumb:hover{
+    border-radius: 5px;
+    background-color: rgb(255, 128, 0);
+}
+
+
+::ng-deep .delete-dialog mat-dialog-container .mat-mdc-dialog-surface{
+    border-radius: 15px !important;
+    box-shadow: 0 6px 10px -4px rgb(0 0 0 / 15%) !important;
+}

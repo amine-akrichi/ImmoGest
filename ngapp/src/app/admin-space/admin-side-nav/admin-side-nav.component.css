@@ -1,0 +1,99 @@
+body{
+   display: grid;
+   grid-template-columns: 250px 1fr; 
+}
+
+
+
+mat-divider{
+    width: 90%;
+    position: absolute;
+    top: 60px;
+    z-index: inherit;
+}
+
+nav{
+    width: 250px;
+    height: 100vh;
+    box-shadow: 0 0px 40px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #454545;
+}
+
+mat-icon{
+    font-size: 30px;
+    width: 30px;
+    height: 100%;
+    margin-right: 0.5vw;
+    vertical-align: middle;
+}
+
+
+.nav-body div{
+    font-size: 17px;
+    font-weight: 200;
+    width: 200px;
+    color: #a6a6a6;
+    margin:2vh 0 2vh 0;
+    padding:1vh 0 1vh 0;
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-body div:hover{
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+
+.nav-body .nav-item-active{
+    font-size: 17px;
+    font-weight: 200;
+    width: 200px;
+    margin:2vh 0 2vh 0;
+    padding:1vh 0 1vh 0;
+    display: flex;
+    text-align: center;
+    color: #ff914d;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+
+.nav-body{
+    margin-top: 2vh;
+}
+
+.nav-header{
+    padding-top: 5px;
+    width: 100%;
+}
+
+.nav-header #admin-text{
+    margin-left: 8vw;
+    font-size: 18px;
+    color:#a6a6a6;;
+}
+
+.nav-header h1{
+    font-weight: 300;
+    color:#a6a6a6;;
+    font-size: 30px;
+    margin: 0 0 0 1vw;
+}
+
+
+
+.logout-btn{
+    position: fixed;
+    bottom: 5px;
+}
+
+

@@ -1,0 +1,72 @@
+<H1 mat-dialog-title > Modifier un appartement </H1>
+<div class="dialog-content" mat-dialog-content >
+    <div class="appartement-info">
+        <div class="row">
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>N°</mat-label>
+                <input matInput required [(ngModel)]="data.appartement.number">
+            </mat-form-field>
+
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Etage</mat-label>
+                <mat-select required [(ngModel)]="data.appartement.etage">
+                    <mat-option value="RDC">RDC</mat-option>
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                    <mat-option value="4">4</mat-option>
+            </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Bloc</mat-label>
+                <input matInput required [(ngModel)]="data.appartement.bloc">
+            </mat-form-field>
+        </div>
+        <div class="row">
+             <mat-form-field class="form-control-half-width" appearance="outline">
+                <mat-label>Vue</mat-label>
+                    <mat-select required [(ngModel)]="data.appartement.vue">
+                    <mat-option value="Jardin">Jardin</mat-option>
+                    <mat-option value="Vue rue principal">Vue rue principal</mat-option>
+                    <mat-option value="Vue mer">Vue mer</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="form-control-half-width" appearance="outline">
+                <mat-label>Orientation</mat-label>
+                <mat-select required [(ngModel)]="data.appartement.orientation">
+                    <mat-option value="Nord">Nord</mat-option>
+                    <mat-option value="Est">Est</mat-option>
+                    <mat-option value="Ouest">Ouest</mat-option>
+                    <mat-option value="Sud">Sud</mat-option>    
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select required [(ngModel)]="data.appartement.type">
+                    <mat-option value="Penthouse">Penthouse</mat-option>
+                    <mat-option value="S+1">S+1</mat-option>
+                    <mat-option value="S+2">S+2</mat-option>
+                    <mat-option value="S+3">S+3</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Superficie</mat-label>
+                <input matInput required type="number" [(ngModel)]="data.appartement.surface">
+                <span matTextSuffix>m²</span>
+            </mat-form-field>
+            <mat-form-field class="form-control-third-width" appearance="outline">
+                <mat-label>Prix m²</mat-label>
+                <input matInput required type="number" [(ngModel)]="data.appartement.price_m2">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            Extra : 
+            <mat-checkbox color="primary" [(ngModel)]="data.appartement.parking" value="Parking">Parking</mat-checkbox>
+            <mat-checkbox color="primary" [(ngModel)]="data.appartement.cellier" value="Cellier">Cellier</mat-checkbox>
+        </div>
+    </div>
+</div>
+<mat-dialog-actions align="end" ><button type="submit" mat-button color="primary" [mat-dialog-close]="data.appartement" cdkFocusInitial>Mise à jour</button></mat-dialog-actions>

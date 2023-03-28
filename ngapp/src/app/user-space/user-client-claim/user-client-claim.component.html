@@ -1,0 +1,61 @@
+<body>
+    
+    <nav>
+        <span class="title">Réclamations de client {{client?.lastname}} {{client?.name}} </span> 
+        <span class="example-spacer"></span>
+        <button mat-button class="add-btn" (click)="addClaim()"><mat-icon class="add-icon">add_circle_outline</mat-icon>Ajouter une Réclamation</button>
+        <input type="text" class="search-input" placeholder="Recherche... " #input (keyup)="applyFilter($event)"><mat-icon class="Search-icon" >search</mat-icon>
+    </nav>
+    <mat-divider></mat-divider>
+    <section class="table-section">
+        <mat-card class="table-card">
+            <div>
+                <table mat-table [dataSource]="dataSource" matSort>
+    
+                    <ng-container matColumnDef="date">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Date</strong> </th>
+                        <td mat-cell *matCellDef="let claim"> {{ claim.date}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Type</strong> </th>
+                        <td mat-cell *matCellDef="let claim"> {{ claim.type}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="details">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Details</strong> </th>
+                        <td mat-cell *matCellDef="let claim"> {{ claim.details}} </td>
+                    </ng-container>
+            
+                
+                    <ng-container matColumnDef="response">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> <Strong>Réponse</Strong> </th>
+                        <td mat-cell *matCellDef="let claim" > {{ claim.response}} </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="resolved">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> <Strong>Résolu</Strong> </th>
+                        <td mat-cell *matCellDef="let claim" ><mat-icon>{{claim.resolved? 'check_circle_outline':'highlight_off'}}</mat-icon> </td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>Action</strong>  </th>
+                        <td mat-cell *matCellDef="let claim" > 
+                        <button mat-button color="primary" (click)="updateClaim(claim)" ><mat-icon>edit</mat-icon></button>
+                        <button mat-button color="warn" (click)="deleteClaim(claim)"><mat-icon>delete</mat-icon></button>
+                        </td>
+                    </ng-container>
+            
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let claim; columns: displayedColumns;"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">Aucune donnée ne correspond au "{{input.value}}"</td>
+                    </tr>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10, 25]" aria-label="Select page of users"></mat-paginator>
+            </div>
+        </mat-card>
+        
+    </section>
+</body>

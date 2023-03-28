@@ -1,0 +1,57 @@
+.background-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #ff914d;
+}
+
+.login-card{
+   
+    display: flex;
+    flex-direction: row;
+    height: 550px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.image-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+
+.image-div img{
+    flex-shrink: 0;
+    height: 550px;
+    border-radius: 15px 0 0 15px;
+    margin: 0;
+}
+
+
+.form-div{
+    padding: 10vh;
+    display: flex;
+    
+    align-items: center;
+}
+
+h1{
+    color: #ff914d;
+    font-size: 78px;
+    margin: 0 0 10vh 0 ;
+}
+
+#sbmt-btn{
+    color: #ff914d;
+    font-weight: 300;
+    font-size: 18px;
+    height: 6vh;
+}
+
+.full-width{
+    width: 30vw;
+}
